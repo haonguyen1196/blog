@@ -2,9 +2,10 @@
   "name": "blog",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "watch": "node-sass --watch src/resources/scss/ --output src/public/css/",
+    "start": "nodemon --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,10 +18,24 @@
     "url": "https://github.com/haonguyen1196/blog/issues"
   },
   "homepage": "https://github.com/haonguyen1196/blog#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --write --tab-width 4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "morgan": "^1.10.0",
+    "node-sass": "^8.0.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7"
   }
 }
